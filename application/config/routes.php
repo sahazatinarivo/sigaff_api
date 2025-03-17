@@ -17,3 +17,6 @@ $route['get-cisco.html']     = "ApiController/getCisco";
 $route['get-etab.html']     = "ApiController/getEtab";
 $route['get-dir.html']     = "ApiController/getDir";
 $route['get-service.html']     = "ApiController/getServices";
+$route['get-div.html']     = "ApiController/getDiv";
+$route['get-service-dren.html']     = "ApiController/getServiceDren";
+$route['get-crinfp.html']     = "ApiController/getCrinfp";

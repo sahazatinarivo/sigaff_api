@@ -202,4 +202,66 @@ class ApiController extends ApiConfig {
                 ->set_output(json_encode([ "_status"=> $_status,"data"=>$__res ]));
         }
     }
+
+    public function getDiv(){
+        $output = array();
+
+        if ($this->verify_api_key()) {
+            $_status = 'ko';
+
+            $__res = $this->db->from('t_division_c')
+                             ->get()
+                             ->result();
+
+            if (count($__res) > 0) {
+                $_status = 'ok';
+            }
+
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([ "_status"=> $_status,"data"=>$__res ]));
+        }
+    }
+
+    public function getServiceDren(){
+        $output = array();
+
+        if ($this->verify_api_key()) {
+            $_status = 'ko';
+
+            $__res = $this->db->from('t_service_d')
+                             ->get()
+                             ->result();
+
+            if (count($__res) > 0) {
+                $_status = 'ok';
+            }
+
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([ "_status"=> $_status,"data"=>$__res ]));
+        }
+    }
+
+    public function getCrinfp(){
+        $output = array();
+        $code_dren = isset($_GET['codeDren']) ? $_GET['codeDren'] : 0;
+
+        if ($this->verify_api_key()) {
+            $_status = 'ko';
+
+            $__res = $this->db->from('t_crinfp')
+                             ->where('code_dren',$code_dren)
+                             ->get()
+                             ->result();
+
+            if (count($__res) > 0) {
+                $_status = 'ok';
+            }
+
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([ "_status"=> $_status,"data"=>$__res ]));
+        }
+    }
 }
