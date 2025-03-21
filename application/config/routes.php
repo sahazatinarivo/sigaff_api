@@ -20,3 +20,5 @@ $route['get-service.html']     = "ApiController/getServices";
 $route['get-div.html']     = "ApiController/getDiv";
 $route['get-service-dren.html']     = "ApiController/getServiceDren";
 $route['get-crinfp.html']     = "ApiController/getCrinfp";
+$route['get-motif.html']     = "ApiController/getMotif";
+$route['get-type-motif.html']     = "ApiController/getTypeMotif";

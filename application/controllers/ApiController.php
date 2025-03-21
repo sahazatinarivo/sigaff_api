@@ -264,4 +264,47 @@ class ApiController extends ApiConfig {
                 ->set_output(json_encode([ "_status"=> $_status,"data"=>$__res ]));
         }
     }
+
+    public function getMotif(){
+        $output = array();
+
+        if ($this->verify_api_key()) {
+            $_status = 'ko';
+
+            $__res = $this->db->from('t_motifs')
+                             ->where('active',1)
+                             ->get()
+                             ->result();
+
+            if (count($__res) > 0) {
+                $_status = 'ok';
+            }
+
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([ "_status"=> $_status,"data"=>$__res ]));
+        }
+    }
+
+    public function getTypeMotif(){
+        $output = array();
+        $motif = isset($_GET['motif']) ? $_GET['motif'] : 0;
+
+        if ($this->verify_api_key()) {
+            $_status = 'ko';
+
+            $__res = $this->db->from('t_type_motif')
+                             ->where('id_motif',$motif)
+                             ->get()
+                             ->result();
+
+            if (count($__res) > 0) {
+                $_status = 'ok';
+            }
+
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([ "_status"=> $_status,"data"=>$__res ]));
+        }
+    }
 }
